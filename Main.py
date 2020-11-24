@@ -69,8 +69,9 @@ async def ping(ctx):
 
 
 # Brzudal Ropuch
-client.run('NzA2NTkyNTQwNDYzMzMzNTA2.Xq8kcA.7NPC_c_P6M8PYmsfqVQ53v85I28')
+with open('ropuch.txt', 'r', encoding='utf-8') as login:
+    client.run(login)
 
 # Test Bot
-# client.run('NzA1NDMwNzUyOTc1NjUwODI2.XrEoSg.TOTSUa3eNg4Xtq_16ggymDFUfXc')
-
+# with open('test.txt', 'r', encoding='utf-8') as login:
+#     client.run(login)
