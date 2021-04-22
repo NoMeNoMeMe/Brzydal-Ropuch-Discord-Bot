@@ -1,13 +1,13 @@
 import discord
 from discord.ext import commands
 
-client = commands.Bot(command_prefix='.')
+bot = commands.Bot(command_prefix='!')
 
 
 class Users(commands.Cog):
 
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, bot):
+        self.bot = bot
 
     # Event - cog loaded
     # @commands.Cog.listener()
@@ -43,7 +43,7 @@ class Users(commands.Cog):
 
     # @commands.Cog.listener()
     # async def on_message(self, message):
-    #     id = client.get_guild(707151504368468020)
+    #     id = bot.get_guild(707151504368468020)
     #     channels = ["ogólny"]
     #     if message.channel in channels:
     #
@@ -51,5 +51,5 @@ class Users(commands.Cog):
     #            await message.channel.send(f"Liczba kucy: {id.member_count}")
 
 
-def setup(client):
-    client.add_cog(Users(client))
+def setup(bot):
+    bot.add_cog(Users(bot))

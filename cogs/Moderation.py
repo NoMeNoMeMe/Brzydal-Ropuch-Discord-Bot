@@ -1,15 +1,13 @@
 import discord
 from discord.ext import commands
 
-# https://www.youtube.com/watch?v=vQw8cFfZPx0
-
-client = commands.Bot(command_prefix='.')
+bot = commands.Bot(command_prefix='!')
 
 
 class Moderation(commands.Cog):
 
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, bot):
+        self.bot = bot
 
     # Event - cog loaded
     # @commands.Cog.listener()
@@ -29,7 +27,7 @@ class Moderation(commands.Cog):
         await member.ban(reason=reason)
         await ctx.send(f'Banned {member.mention}')
 
-    # https://www.youtube.com/watch?v=zOVl7tAexl4   Unban
+    # Unban user
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def unban(self, ctx, *, member):
@@ -48,11 +46,10 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=5):
-        """(int)"""
+        """(int) default = 5"""
         await ctx.channel.purge(limit=amount)
 
-    # # jeśli ktoś zmienia nick na podany np "tim", bot zmienia go na poprzedni
-    # https://www.youtube.com/watch?v=RwAqp26s9aE
+    # # jeśli ktoś zmienia nick na podany, bot zmienia go na poprzedni
     # @commands.Cog.listener()
     # async def on_member_update(self, before, after):
     #     nick = after.nick
@@ -66,11 +63,10 @@ class Moderation(commands.Cog):
 
 
     # # usuwa niecenzuralne słowa
-    # # https://www.youtube.com/watch?v=RwAqp26s9aE
     # for word in bad_words:
     #     if word in bad_words:
     #         print(f"A bad word {word} was said.")
     #         await message.channel.purge(limit=1)
 
-def setup(client):
-    client.add_cog(Moderation(client))
+def setup(bot):
+    bot.add_cog(Moderation(bot))
